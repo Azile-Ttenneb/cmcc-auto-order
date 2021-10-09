@@ -63,6 +63,7 @@ private:
     bool GetCartInfo();
     bool GetFee();
     bool GetPoints();
+    bool GetPlanBal();
     bool GetAddress();
     bool GetCartGoods();
     bool CheckSSO();
@@ -75,15 +76,12 @@ private:
 
     void SetCookie(QNetworkRequest &req);
     void UpdateCookie(const QNetworkReply &rep);
-
-    QByteArray GetCookieValue(const QByteArray &k);
-
-
-
-
     bool GetMethod(const QString &url, const QMap<QByteArray, QByteArray> &headers, int timeout, QByteArray &r);
     bool PostMethod(const QString &url, const QMap<QByteArray, QByteArray> &headers, const QByteArray &body, int timeout, QByteArray &r);
 
+    QByteArray GetCookieValue(const QString &url, const QByteArray &k);
+    void Sleep(int time);
+    QByteArray GetCurrentTimeStr();
 
 private:
     Ui::MainWindow *ui;
@@ -94,5 +92,8 @@ private:
     QByteArray lgToken;
     QByteArray artifact;
     QByteArray mobileNo;
+
+    QByteArray loginQr;
+    QByteArray cartCode;
 };
 #endif // MAINWINDOW_H
